@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Upload your project</title>
+<link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/619/619175.png">
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f8f9fa;
+  }
+
+    /* Top bar with logo and title */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Sépare le logo et les boutons */
+    padding: 0.8rem 2rem;
+    background: rgba(81, 74, 157, 0.5);
+    backdrop-filter: saturate(180%) blur(15px);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.8rem;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    user-select: none;
+  }
+  .header-title {
+  flex: 1;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #fff;
+  text-shadow: 0 3px 8px rgba(81,74,157,0.4);
+}
+
+  .logo {
+    font-size: 1.6rem;
+    font-weight: 900;
+    cursor: pointer;
+    color: #ffc75f;
+    text-shadow: 0 0 8px #ffc75f99;
+    user-select: none;
+  }
+  .logo:hover {
+    color: #ffb347;
+    text-shadow: 0 0 12px #ffb347cc;
+  }
+
+  .header-title {
+    flex-grow: 1;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #fff;
+    text-shadow: 0 3px 8px rgba(81,74,157,0.4);
+  }
+
+  .search-container {
+  display: flex;
+  flex-direction: column; /* aligne les enfants verticalement */
+  align-items: center;     /* centre horizontalement les éléments */
+  gap: 10px;               /* espace vertical entre les éléments */
+  margin: 20px;
+  }
+
+
+  .search-input {
+    padding: 10px;
+    width: 100%;
+    max-width: 200px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+  }
+
+  .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px; /* Ajout d’espace entre les cartes */
+      padding: 30px;
+  }
+
+
+  .project-card {
+    width: 95%; /* Taille plus petite des cartes */
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .project-card img {
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  .project-card:hover {
+      transform: scale(1.05);
+  }
+
+  /* Buttons styling */
+  button {
+    padding: 0.6rem 1.2rem;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.15s ease;
+    color: #fff;
+  }
+  button.community {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  }
+  button.community:hover {
+    background: linear-gradient(135deg, #ff4b2b, #ff416c);
+    transform: scale(1.05);
+  }
+  button.upload-project {
+    background: linear-gradient(135deg, #1a740e, #2bff60);
+  }
+  button.upload-project:hover {
+    background: linear-gradient(135deg, #199b39, #2ca71c);
+    transform: scale(1.05);
+  }
+  button.tutorial {
+    background: linear-gradient(135deg, #24c6dc, #514a9d);
+  }
+  button.tutorial:hover {
+    background: linear-gradient(135deg, #514a9d, #24c6dc);
+    transform: scale(1.05);
+  }
+  /*login form*/
+  .dropdown-container {
+    position: relative;
+    display: inline-block;
+    margin-left:auto;
+  }
+  .dropdown-content {
+  display: none;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: white;
+  min-width: 200px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+  z-index: 1;
+}
+.dropdown-content label {
+  display: block;
+  font-size: 0.9rem;
+  color: #333; /* noir/gris foncé visible sur fond blanc */
+  margin-top: 10px;
+}
+.dropdown-content input {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+#loginButton {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.dropdown-content input,
+.dropdown-content button,
+.upload-project {
+  margin-top: 10px;
+  padding: 8px;
+}
+/*upload section*/
+.upload-section {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.upload-section h2 {
+  margin-bottom: 20px;
+  color: #514a9d;
+  font-size: 1.5rem;
+}
+
+.upload-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.upload-form label {
+  text-align: left;
+  font-weight: 600;
+  color: #333;
+}
+
+.upload-form input,
+.upload-form textarea {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-family: inherit;
+  font-size: 1rem;
+  resize: vertical;
+}
+
+.image-preview {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+.image-preview img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+.image-preview.multiple img {
+  width: 80px;
+  height: 80px;
+}
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo" title="Back to Home" onclick="location.href='index.html'">🚀 Magical Buttons</div>
+  <h1 class="header-title">Upload your project</h1>
+  <div class="dropdown-container">
+    <button class="community" id="loginButton">Login</button>
+    <div id="loginForm" class="dropdown-content">
+      <form>
+        <label for="username">Usersname</label>
+        <input type="text" id="username" name="username" required>
+      
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+      
+        <button class="tutorial" type="submit">connect✍🏽</button>
+      </form>
+    </div>
+  </div>
+</header>
+
+<section class="upload-section">
+  <h2>Submit a new project</h2>
+  <form class="upload-form" id="projectForm">
+    
+    <label for="project-name">Name of the project</label>
+    <input type="text" id="project-name" name="project-name" required>
+
+    <label for="project-description">Description</label>
+    <textarea id="project-description" name="project-description" rows="5" required></textarea>
+
+    <!-- Image de présentation -->
+    <label for="presentation-image">Front page image</label>
+    <input type="file" id="presentation-image" name="presentation-image" accept="image/*" required>
+    <div id="presentation-preview" class="image-preview"></div>
+
+    <!-- Images de description -->
+    <label for="description-images">show more in images</label>
+    <input type="file" id="description-images" name="description-images" accept="image/*" multiple>
+    <div id="description-preview" class="image-preview multiple"></div>
+
+    <button type="submit" class="upload-project" >📤 Upload on Magical Buttons</button>
+  </form>
+</section>
+
+
+<script src="login.js"></script>
+<script src="upload.js"></script>
+</body>
+</html>

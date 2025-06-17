@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project of Daddy24_</title>
+<link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/619/619175.png">
+
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f8f9fa;
+  }
+
+  /* En-tête avec bannière */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background: rgba(81, 74, 157, 0.5);
+    backdrop-filter: saturate(180%) blur(15px);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.8rem;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    user-select: none;
+  }
+
+  .logo {
+    font-size: 2rem;
+    font-weight: 900;
+    cursor: pointer;
+    color: #ffc75f;
+    text-shadow: 0 0 8px #ffc75f99;
+    user-select: none;
+  }
+
+  .header-title {
+    flex: 1;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #fff;
+    text-shadow: 0 3px 8px rgba(81,74,157,0.4);
+  }
+
+  /* Contenu principal */
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .project-container {
+    display: flex;
+    flex-direction: column; /* Organise les éléments en colonne */
+    align-items: center; /* Centre les éléments horizontalement */
+    max-width: 800px;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+
+  .project-image {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  .project-code {
+    width: 50%;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .download-btn {
+    margin-top: 20px;
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.download-btn:hover {
+    transform: scale(1.05);
+}
+
+
+  .back-btn {
+    margin-top: 20px;
+    background: linear-gradient(135deg, #24c6dc, #514a9d);
+    color: #fff;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+  }
+
+  .back-btn:hover {
+    transform: scale(1.05);
+  }
+  /* Buttons styling */
+  button {
+    padding: 0.6rem 1.2rem;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.15s ease;
+    color: #fff;
+  }
+  button.community {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  }
+  button.community:hover {
+    background: linear-gradient(135deg, #ff4b2b, #ff416c);
+    transform: scale(1.05);
+  }
+
+  button.tutorial {
+    background: linear-gradient(135deg, #24c6dc, #514a9d);
+  }
+  button.tutorial:hover {
+    background: linear-gradient(135deg, #514a9d, #24c6dc);
+    transform: scale(1.05);
+  }
+  /*login form*/
+  .dropdown-container {
+    position: relative;
+    display: inline-block;
+    margin-left:auto;
+  }
+  .dropdown-content {
+  display: none;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: white;
+  min-width: 200px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+  z-index: 1;
+}
+#loginButton {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.dropdown-content input,
+.dropdown-content button {
+  margin-top: 10px;
+  padding: 8px;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo" title="Back to Home" onclick="location.href='index.html'">🚀 Magical Buttons</div>
+  <div class="header-title">Project of Daddy24_</div>
+  <div style="width:48px;"></div> <!-- spacer for flex alignment -->
+  <div class="dropdown-container">
+    <button class="community" id="loginButton">Login</button>
+    <div id="loginForm" class="dropdown-content">
+      <form>
+        <label for="username">Usersname</label>
+        <input type="text" id="username" name="username" required>
+      
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+      
+        <button class="tutorial" type="submit">connect✍🏽</button>
+      </form>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="project-container">
+    <img src="https://lootboxjeux.fr/cdn/shop/collections/jeux-de-societe-experts-581880.webp?v=1719411345&width=1296" alt="Project 1 Image" class="project-image">
+    <h2>Awesome Game by Daddy24_</h2>
+    <h3>Description:</h3>
+    <p>
+      This project explores interactive mechanics, allowing players to immerse themselves in a dynamic universe.
+Inspired by classic games, Daddy24_ offers a revisited experience with visual improvements and innovative gameplay.
+    </p>
+    <img src="https://codemag.com/Article/Image/1305081/Cichelli_Fig003.tif" alt="Project 1 code" class="project-code">
+    <button class="download-btn" onclick="downloadFile()">⬇ Download the project</button>
+  </div>
+  <button class="back-btn" onclick="location.href='community-projects.html'">BACK TO PROJECTS</button>
+</main>
+<script>
+function downloadFile() {
+    const content = "Name of project : Awesome Game\n" + 
+                    "Autor : Daddy24_\n" + 
+                    "Description : This project explores interactive mechanics, allowing players to immerse themselves in a dynamic universe.\n" + 
+                    "Licence : Open-source\n\n" + 
+                    "Installation :\n1. Download the files.\n2. Open the game in the dedicated environment.\n3. Have fun!";
+
+    const element = document.createElement("a");
+    const file = new Blob([content], { type: "text/plain" }); 
+    element.href = URL.createObjectURL(file);
+    element.download = "simon_benjamin.ino";
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+}
+</script>
+<script src="login.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tutorial Page</title>
+<link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/619/619175.png">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+  /* Base reset */
+  * {
+    box-sizing: border-box;
+  }
+  body, html {
+    margin: 0; padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #fde8d0; /* light orange background */
+    color: #2c3e50;
+    overflow-x: hidden;
+  }
+
+  /* Top bar with logo and title */
+  header {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 2rem;
+    background: rgba(81, 74, 157, 0.5);
+    backdrop-filter: saturate(180%) blur(15px);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.8rem;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    user-select: none;
+  }
+
+  .logo {
+    font-size: 1.6rem;
+    font-weight: 900;
+    cursor: pointer;
+    color: #ffc75f;
+    text-shadow: 0 0 8px #ffc75f99;
+    user-select: none;
+  }
+  .logo:hover {
+    color: #ffb347;
+    text-shadow: 0 0 12px #ffb347cc;
+  }
+
+  .header-title {
+    flex-grow: 1;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #fff;
+    text-shadow: 0 3px 8px rgba(81,74,157,0.4);
+  }
+
+  /* Container to constrain main content width */
+  main {
+    max-width: 900px;
+    margin: 2rem auto 6rem auto;
+    padding: 0 1rem;
+    z-index: 1;
+    position: relative;
+    background: transparent; /* no background to show body bg */
+  }
+
+  /* Beginner tutorial container to position cardboard box behind */
+  #beginner-tutorial {
+    position: relative;
+    margin-bottom: 5rem;
+    padding: 3rem 2rem 3rem 2rem;
+    background: rgba(255 255 255 / 0.85);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(81,74,157,0.2);
+    overflow: visible;
+  }
+
+  /* Parallax cardboard box image behind beginner tutorial */
+  #cardboard-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 380px;
+    max-width: 90vw;
+    pointer-events: none;
+    user-select: none;
+    z-index: -1;
+    will-change: transform;
+    opacity: 0.8;
+  }
+
+  /* Section titles */
+  h1, h2 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #4a339b;
+  }
+
+  h1 {
+    font-size: 2.8rem;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 3rem;
+    text-shadow: 0 3px 8px rgba(81,74,157,0.4);
+  }
+  h2 {
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Video */
+  .video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 8px 24px rgba(81,74,157,0.3);
+  }
+  .video-container iframe, .video-container video {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Image row 3 images */
+  .image-row {
+    display: flex;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  .image-row img {
+    flex: 1;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(81,74,157,0.12);
+    object-fit: cover;
+    height: 160px;
+  }
+
+  /* Paragraph */
+  p {
+    line-height: 1.6;
+    color: #454575;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+
+  /* Advanced tutorial with side decorations */
+  #advanced-tutorial {
+    position: relative;
+    margin-top: 3rem;
+    padding: 3rem 80px; /* leave horizontal padding for side images */
+    background: rgba(255 255 255 / 0.85);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(81,74,157,0.2);
+  }
+
+  /* Advanced images grid (4 images) */
+  .grid-4 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .grid-4 img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 6px 18px rgba(81,74,157,0.15);
+    object-fit: cover;
+    height: 140px;
+    transition: transform 0.3s ease;
+  }
+  .grid-4 img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(81,74,157,0.3);
+  }
+  #largeImageContainer {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+  #largeImage {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+  .download-btn {
+    margin-top: 20px;
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.download-btn:hover {
+    transform: scale(1.05);
+}
+
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    .image-row {
+      flex-direction: column;
+    }
+    .image-row img {
+      height: 200px;
+    }
+
+    #advanced-tutorial {
+      padding: 3rem 1rem 3rem 1rem;
+    }
+    .side-image {
+      display: none;
+    }
+  }
+
+/*bouton de telechargement fichier source*/
+.download-button {
+  display: inline-block;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 20px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.download-button:hover {
+  background: linear-gradient(135deg, #0056b3, #007bff);
+  transform: scale(1.05);
+}
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo" title="Back to Home" onclick="location.href='index.html'">🚀 Magical Buttons</div>
+  <div class="header-title">Welcome to the tutorial</div>
+  <div style="width:48px;"></div> <!-- spacer for flex alignment -->
+</header>
+
+<main>
+
+  <section id="beginner-tutorial">
+    
+    <h2>First Time modifying your magical buttons? here is the easy tutorial -></h2>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Tutorial Video" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <div class="image-row" aria-label="Three tutorial images">
+      <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=400&q=80" alt="Tutorial step 1" />
+      <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400&q=80" alt="Tutorial step 2" />
+      <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=400&q=80" alt="Tutorial step 3" />
+    </div>
+
+    <p>
+      This beginner tutorial helps you get started with the basics. Watch the video and explore the images above that illustrate key steps to help you understand the fundamental concepts right away.
+    </p>
+  </section>
+
+  <section id="advanced-tutorial">
+    
+    <h2>Advanced Tutorial</h2>
+
+    <div class="grid-4" aria-label="Four advanced tutorial images">
+      <img class="thumbnail" src="https://m.media-amazon.com/images/I/51LZfcvMW1S._AC_UF894,1000_QL80_.jpg" data-src="https://m.media-amazon.com/images/I/51LZfcvMW1S._AC_UF894,1000_QL80_.jpg" alt="Advanced tutorial image 1" onclick="enlargeImage()"/>
+      <img class="thumbnail" src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80" data-src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80" alt="Advanced tutorial image 2" onclick="enlargeImage()"/>
+      <img class="thumbnail" src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=400&q=80" data-src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=400&q=80" alt="Advanced tutorial image 3" onclick="enlargeImage()"/>
+      <img class="thumbnail" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400&q=80" data-src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400&q=80" alt="Advanced tutorial image 4" onclick="enlargeImage()"/>
+    </div>
+
+    <div id="largeImageContainer" onclick="closeImage()">
+      <img id="largeImage" src="">
+    </div>
+
+
+    <p>
+      The advanced tutorial dives deeper into complex techniques and strategies to help you master the skills. Follow the visuals and detailed explanations carefully to get the most out of it.
+    </p>
+    <p>
+      Make sure you are comfortable with the basics before proceeding here. Experiment and practice regularly to build confidence and expertise.
+    </p>
+    <a href="https://www.arduino.cc/en/software/" target="_blank">
+    <button class="download-btn">⬇ Download arduino IDE on offical page</button>
+    </a>
+
+  </section>
+  <p>Here is the source code of the stable program downloadable at any time:</p>
+  <a href="simon_benjamin.ino" download class="download-button">Download Legacy Magical Button code ⬇️</a>
+
+  <script>
+    document.querySelectorAll('.thumbnail').forEach(img => {
+      img.addEventListener('click', function() {
+        let largeImage = document.getElementById("largeImage");
+        largeImage.src = this.dataset.src; // Récupère la source stockée
+        document.getElementById("largeImageContainer").style.display = "flex";
+      });
+    });
+
+  function closeImage() {
+    document.getElementById("largeImageContainer").style.display = "none";
+  }
+
+  </script>
+</main>
+
+</body>
+</html>
+

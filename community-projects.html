@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Community Projects</title>
+<link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/619/619175.png">
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f8f9fa;
+  }
+
+    /* Top bar with logo and title */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Sépare le logo et les boutons */
+    padding: 0.8rem 2rem;
+    background: rgba(81, 74, 157, 0.5);
+    backdrop-filter: saturate(180%) blur(15px);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.8rem;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    user-select: none;
+  }
+  .header-title {
+  flex: 1;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #fff;
+  text-shadow: 0 3px 8px rgba(81,74,157,0.4);
+}
+
+  .logo {
+    font-size: 1.6rem;
+    font-weight: 900;
+    cursor: pointer;
+    color: #ffc75f;
+    text-shadow: 0 0 8px #ffc75f99;
+    user-select: none;
+  }
+  .logo:hover {
+    color: #ffb347;
+    text-shadow: 0 0 12px #ffb347cc;
+  }
+
+  .header-title {
+    flex-grow: 1;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #fff;
+    text-shadow: 0 3px 8px rgba(81,74,157,0.4);
+  }
+
+  .search-container {
+  display: flex;
+  flex-direction: column; /* aligne les enfants verticalement */
+  align-items: center;     /* centre horizontalement les éléments */
+  gap: 10px;               /* espace vertical entre les éléments */
+  margin: 20px;
+  }
+
+
+  .search-input {
+    padding: 10px;
+    width: 100%;
+    max-width: 200px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+  }
+
+  .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px; /* Ajout d’espace entre les cartes */
+      padding: 30px;
+  }
+
+
+  .project-card {
+    width: 95%; /* Taille plus petite des cartes */
+    background: rgb(245, 237, 231);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .project-card img {
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  .project-card:hover {
+      transform: scale(1.05);
+  }
+  .project-card p {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 10px;
+}
+
+  /* Buttons styling */
+  button {
+    padding: 0.6rem 1.2rem;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.15s ease;
+    color: #fff;
+  }
+  button.community {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  }
+  button.community:hover {
+    background: linear-gradient(135deg, #ff4b2b, #ff416c);
+    transform: scale(1.05);
+  }
+  button.upload-project {
+    background: linear-gradient(135deg, #1a740e, #2bff60);
+  }
+  button.upload-project:hover {
+    background: linear-gradient(135deg, #199b39, #2ca71c);
+    transform: scale(1.05);
+  }
+  button.tutorial {
+    background: linear-gradient(135deg, #24c6dc, #514a9d);
+  }
+  button.tutorial:hover {
+    background: linear-gradient(135deg, #514a9d, #24c6dc);
+    transform: scale(1.05);
+  }
+  /*login form*/
+  .dropdown-container {
+    position: relative;
+    display: inline-block;
+    margin-left:auto;
+  }
+  .dropdown-content {
+  display: none;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: white;
+  min-width: 200px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+  z-index: 1;
+}
+.dropdown-content label {
+  display: block;
+  font-size: 0.9rem;
+  color: #333; /* noir/gris foncé visible sur fond blanc */
+  margin-top: 10px;
+}
+.dropdown-content input {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+#loginButton {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.dropdown-content input,
+.dropdown-content button,
+.upload-project {
+  margin-top: 10px;
+  padding: 8px;
+}
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo" title="Back to Home" onclick="location.href='index.html'">🚀 Magical Buttons</div>
+  <h1 class="header-title">Community Projects</h1>
+  <div class="dropdown-container">
+    <button class="community" id="loginButton">Login</button>
+    <div id="loginForm" class="dropdown-content">
+      <form>
+        <label for="username">Usersname</label>
+        <input type="text" id="username" name="username" required>
+      
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+      
+        <button class="tutorial" type="submit">connect✍🏽</button>
+      </form>
+    </div>
+  </div>
+</header>
+
+<div class="search-container">
+  <input type="text" class="search-input" placeholder="Search for projects...">
+  <button class="upload-project" onclick="location.href='upload-project.html'">👉🏼Upload your amazing project👈🏼</button>
+</div>
+
+<div class="projects-grid">
+  <a href="project-mario.html" class="project-card" target="_blank">
+    <img src="https://bigmedia.bpifrance.fr/sites/default/files/styles/bigmedia_article/public/2022-03/mario.jpg?itok=h5P6EMjR" alt="Mario Project">
+    <h3>Mario</h3>
+    <p>A colorful remake of the classic Mario with new levels and fun twists.</p>
+  </a>
+
+  <a href="project-2player.html" class="project-card" target="_blank">
+    <img src="https://www.mpedia.fr/content/uploads/2012/10/jeux-1-3-ans-scaled.jpeg" alt="2 Player Game">
+    <h3>2 Player Game</h3>
+    <p>A local multiplayer game designed for two players on the same keyboard.</p>
+  </a>
+
+  <a href="project1.html" class="project-card" target="_blank">
+    <img src="https://lootboxjeux.fr/cdn/shop/collections/jeux-de-societe-experts-581880.webp?v=1719411345&width=1296" alt="Awesome Game">
+    <h3>Awesome Game</h3>
+    <p>Dive into a rich strategy world inspired by expert board games.</p>
+  </a>
+
+  <a href="project2.html" class="project-card" target="_blank">
+    <img src="https://www.monsieurde.com/14385-large_default/trio.jpg" alt="Creative Art">
+    <h3>Creative Art</h3>
+    <p>Create generative artwork by playing with shapes, colors, and movement.</p>
+  </a>
+
+  <a href="project3.html" class="project-card" target="_blank">
+    <img src="https://i.ytimg.com/vi/Z3M7QR7_IfQ/maxresdefault.jpg" alt="Rapidity Game">
+    <h3>Rapidity Game</h3>
+    <p>Test your reflexes in this fast-paced reaction game with increasing speed.</p>
+  </a>
+
+  <a href="project4.html" class="project-card" target="_blank">
+    <img src="https://img.freepik.com/vecteurs-premium/vecteur-icone-clavier-piano-fond-blanc-icone-piano-pour-conception-web_820464-250.jpg" alt="Piano but Better">
+    <h3>Piano but Better</h3>
+    <p>A modern digital piano with effects, visuals, and real-time feedback.</p>
+  </a>
+</div>
+
+<script src="login.js"></script>
+</body>
+</html>
